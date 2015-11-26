@@ -27,7 +27,7 @@ def handle_up(pin):
         backlight.rgb(0, 0, 0)
         screen_on = False
     else:
-        backlight.rgb(255, 255, 255)
+        backlight.rgb(200, 200, 200)
         screen_on = True
 
 
@@ -36,13 +36,15 @@ def handle_up(pin):
 @j.on(j.BUTTON)
 def handle_button(pin):
     print("Button pressed!")
+    image_num = image_num + 1
+    
     global image_num
     camera.capture('image' + format(image_num,'03') + '.jpg')
     print 'image file: image' + format(image_num,'03') + '.jpg'
 
     lcd.set_cursor_position(13, 2)
     lcd.write(format(image_num,'03'))
-    image_num = image_num + 1
+
 
     
 
@@ -50,7 +52,7 @@ def handle_button(pin):
 
 
 
-lcd.write('Monitor v1')
+lcd.write('CV Monitor v1')
 lcd.set_cursor_position(0, 1)
 lcd.write("CPU: ")
 
@@ -64,7 +66,7 @@ hue = 0.0
 
 lcd.set_contrast(52)
 
-backlight.rgb(255, 255, 255)
+backlight.rgb(200, 200, 200)
 
 
 camera = picamera.PiCamera();
