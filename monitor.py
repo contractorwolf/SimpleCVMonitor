@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 print("""
-This example shows you how to create animations on Display-o-Tron!
-You should see a collection of animated icons on your display.
+This is the CV Monitor with RaspiCam.
 
 Press CTRL+C to exit.
 """)
