@@ -35,9 +35,9 @@ def handle_up(pin):
 @j.on(j.BUTTON)
 def handle_button(pin):
     print("Button pressed!")
-    image_num = image_num + 1
-    
     global image_num
+    
+    image_num = image_num + 1
     camera.capture('image' + format(image_num,'03') + '.jpg')
     print 'image file: image' + format(image_num,'03') + '.jpg'
 
