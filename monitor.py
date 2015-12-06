@@ -10,8 +10,8 @@ import dot3k.backlight as backlight
 import time, datetime, copy, math, psutil
 import dot3k.joystick as j
 import picamera
-
-
+import socket
+import subprocess
 
 screen_on = True;
 image_num = 0;
@@ -45,18 +45,22 @@ def handle_button(pin):
     lcd.write(format(image_num,'03'))
 
 
+def get_ip_addr():
+    ipaddr_command = 'ip address list | grep inet | grep -v 127.0.0 | cut -d " " -f 6 | cut -d "/" -f 1'
+    p = subprocess.Popen(ipaddr_command, shell=True, stdout=subprocess.PIPE,stderr=subprocess.PIPE, stdin=subprocess.PIPE)
+    return p.stdout.read()
+
     
 
 
 
 
-
-lcd.write('CV Monitor v1')
+lcd.write('IP:' + get_ip_addr())
 lcd.set_cursor_position(0, 1)
 lcd.write("CPU: ")
 
-lcd.set_cursor_position(12, 1)
-lcd.write("img:")
+lcd.set_cursor_position(13, 1)
+lcd.write("IMG")
 
 cpu_sample_count = 200
 cpu_samples = [0] * cpu_sample_count
@@ -97,3 +101,4 @@ while True:
     lcd.write(t)
 
     time.sleep(0.05)
+
