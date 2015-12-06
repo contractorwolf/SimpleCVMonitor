@@ -93,10 +93,10 @@ def get_ip_addr():
 
 ip = get_ip_addr()
 
-print "IP: " + ip
+print "ssh to ip: " + ip
 
 lcd.set_cursor_position(0, 0)
-lcd.write("IP: " + ip)
+lcd.write("IP:" + ip)
 
 lcd.set_cursor_position(0, 1)
 lcd.write("CPU: ")
@@ -125,6 +125,12 @@ while True:
     #turns the white led array to reflect the CPU load 
     backlight.set_graph(cpu_avg)
 
+
+    lcd.set_cursor_position(0, 0)
+    lcd.write("IP:" + ip)
+
+    lcd.set_cursor_position(0, 1)
+    lcd.write("CPU: ")
 
     lcd.set_cursor_position(5, 1)
     lcd.write(str(cpu_avg*100))
